@@ -1,7 +1,9 @@
 package baseball.game;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public enum GameCommand {
 
@@ -12,7 +14,8 @@ public enum GameCommand {
     private static final Map<String, GameCommand> GAME_COMMANDS;
 
     static {
-        GAME_COMMANDS = Map.of(RESTART.commandValue, RESTART, QUIT.commandValue, QUIT);
+        GAME_COMMANDS = Arrays.stream(GameCommand.values())
+                .collect(Collectors.toMap(gameCommand -> gameCommand.commandValue, gameCommand -> gameCommand));
     }
 
     GameCommand(final String commandValue) {
