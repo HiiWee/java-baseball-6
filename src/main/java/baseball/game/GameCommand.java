@@ -9,10 +9,10 @@ public enum GameCommand {
     QUIT("2");
 
     private final String commandValue;
-    private static final Map<String, GameCommand> gameCommands;
+    private static final Map<String, GameCommand> GAME_COMMANDS;
 
     static {
-        gameCommands = Map.of(RESTART.commandValue, RESTART, QUIT.commandValue, QUIT);
+        GAME_COMMANDS = Map.of(RESTART.commandValue, RESTART, QUIT.commandValue, QUIT);
     }
 
     GameCommand(final String commandValue) {
@@ -20,7 +20,7 @@ public enum GameCommand {
     }
 
     public static GameCommand findCommand(final String userSelection) {
-        return Optional.ofNullable(gameCommands.get(userSelection))
+        return Optional.ofNullable(GAME_COMMANDS.get(userSelection))
                 .orElseThrow(() -> new IllegalArgumentException("1(재시작) 혹은 2(종료)만 입력해야 합니다."));
     }
 }
