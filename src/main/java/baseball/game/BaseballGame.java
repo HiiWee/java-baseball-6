@@ -9,9 +9,6 @@ import baseball.view.OutputView;
 
 public class BaseballGame {
 
-    private static final String RESTART = "1";
-    private static final String END_GAME = "2";
-
     private final Computer baseballComputer = new Computer();
 
     public void startGame() {
@@ -20,7 +17,7 @@ public class BaseballGame {
             baseballComputer.generateNumber(RandomNumberGenerator::generateRandomNumbers);
             startUserTurn();
             OutputView.printGameOver();
-        } while (askRestart());
+        } while (askRestart() == GameCommand.RESTART);
     }
 
     private void startUserTurn() {
@@ -32,15 +29,8 @@ public class BaseballGame {
         } while (!gameResult.isWin());
     }
 
-    private boolean askRestart() {
+    private GameCommand askRestart() {
         String userSelection = InputView.inputRestart();
-        validateUserSelection(userSelection);
-        return userSelection.equals(RESTART);
-    }
-
-    private void validateUserSelection(final String userSelection) {
-        if (!userSelection.equals(RESTART) && !userSelection.equals(END_GAME)) {
-            throw new IllegalArgumentException("1(재시작) 혹은 2(종료)만 입력해야 합니다.");
-        }
+        return GameCommand.findCommand(userSelection);
     }
 }
