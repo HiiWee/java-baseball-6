@@ -9,6 +9,9 @@ public class GameResultMessageGenerator {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String EMPTY_MESSAGE = "";
 
+    private GameResultMessageGenerator() {
+    }
+
     public static String createGameResultMessage(final GameResult gameResult) {
         if (gameResult.isNothing()) {
             return NOTHING_MESSAGE;

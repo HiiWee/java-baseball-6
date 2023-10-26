@@ -6,6 +6,9 @@ import java.util.stream.Stream;
 
 public class RandomNumberGenerator {
 
+    private RandomNumberGenerator() {
+    }
+
     public static List<Integer> generateRandomNumbers(final int countToGenerate) {
         return Stream.generate(() -> Randoms.pickNumberInRange(1, 9))
                 .distinct()
