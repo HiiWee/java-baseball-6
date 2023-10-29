@@ -48,10 +48,10 @@ public class UserNumberValidator {
     }
 
     private static boolean isDuplicated(final List<String> userNumbers) {
-        return userNumbers.size() != userNumbers.stream()
+        return userNumbers.stream()
                 .distinct()
                 .toList()
-                .size();
+                .size() !=  userNumbers.size();
     }
 
     private static boolean containsZero(final List<String> userNumbers) {
