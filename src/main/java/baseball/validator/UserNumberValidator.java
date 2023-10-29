@@ -58,5 +58,4 @@ public class UserNumberValidator {
         return userNumbers.stream()
                 .anyMatch("0"::equals);
     }
-
 }
