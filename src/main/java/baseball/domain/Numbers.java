@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Numbers {
 
-    protected static final int NUMBER_LENGTH = 3;
+    private static final int NUMBER_LENGTH = GameNumberCondition.NUMBER_LENGTH.getValue();
 
     private final List<Integer> numbers;
 
